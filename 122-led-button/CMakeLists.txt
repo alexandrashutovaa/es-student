@@ -22,3 +22,5 @@ pico_set_linker_script(${PROJECT_NAME}
 )
 
 pico_add_extra_outputs(${PROJECT_NAME})
+
+#комментарий для пуша
