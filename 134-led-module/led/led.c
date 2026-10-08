@@ -14,7 +14,7 @@ void led_init(void)
 
 void led_set(bool on)
 {
-    bool led_state = on;
+    led_state = on;
     gpio_put(LED_PIN, led_state);
 }
 
