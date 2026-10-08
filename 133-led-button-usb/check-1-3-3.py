@@ -1,5 +1,5 @@
-# Проверка задания п1.3.4 на устройстве: посылает плате команды,
-# читает ответы и записывает обмен в файл device-1-3-4.log.
+# Проверка задания п1.3.3 на устройстве: слушает COM-порт платы, пока вы
+# нажимаете кнопку, и записывает принятое в файл device-1-3-3.log.
 
 import time
 from datetime import datetime
@@ -10,11 +10,11 @@ from serial.tools import list_ports
 VENDOR_ID = 0x2E8A
 PRODUCT_ID = 0x000A
 
-TASK = "1.3.4"
+TASK = "1.3.3"
 PROJECT = "133-led-button-usb"
-LOG_NAME = "device-1-3-4.log"
-COMMANDS = ["e", "d", "e", "e", "d", "x"]
-ANSWER_TIMEOUT_S = 1
+LOG_NAME = "device-1-3-3.log"
+DURATION_S = 30
+EXPECTED_LINES = 6
 
 
 def find_board():
@@ -24,23 +24,22 @@ def find_board():
     return None
 
 
-def talk(board):
-    exchange = []
-    with serial.Serial(board.device, timeout=ANSWER_TIMEOUT_S) as port:
+def listen(board):
+    lines = []
+    with serial.Serial(board.device, timeout=1) as port:
         time.sleep(0.2)
         port.reset_input_buffer()
         started = time.monotonic()
-        for command in COMMANDS:
-            port.write(command.encode("ascii"))
-            exchange.append((time.monotonic() - started, "-->", command))
-            answer = port.readline().decode("ascii", "replace").strip()
-            exchange.append((time.monotonic() - started, "<--", answer))
-            print("%s → %s" % (command, answer), end="\r\n")
-            time.sleep(0.5)
-    return exchange
+        while time.monotonic() - started < DURATION_S and len(lines) < EXPECTED_LINES:
+            line = port.readline().decode("ascii", "replace").strip()
+            if line:
+                moment = time.monotonic() - started
+                lines.append((moment, line))
+                print("%8.3f %s" % (moment, line), end="\r\n")
+    return lines
 
 
-def write_log(board, exchange):
+def write_log(board, lines):
     with open(LOG_NAME, "w", encoding="utf-8") as log:
         log.write("задание: " + TASK + "\n")
         log.write("проект: " + PROJECT + "\n")
@@ -48,9 +47,9 @@ def write_log(board, exchange):
         log.write("серийный номер: " + str(board.serial_number) + "\n")
         log.write("порт: " + board.device + "\n")
         log.write("начало: " + datetime.now().isoformat(timespec="seconds") + "\n")
-        for moment, direction, text in exchange:
-            log.write("%8.3f %s %s\n" % (moment, direction, text))
-        log.write("итог: отправлено команд %d\n" % len(COMMANDS))
+        for moment, line in lines:
+            log.write("%8.3f <-- %s\n" % (moment, line))
+        log.write("итог: принято строк %d\n" % len(lines))
 
 
 board = find_board()
@@ -58,7 +57,8 @@ board = find_board()
 if board is None:
     print("Плата не найдена. Проверьте кабель и запишите на плату прошивку задания.", end="\r\n")
 else:
-    print("Плата на порту " + board.device + ", посылаю команды", end="\r\n")
-    exchange = talk(board)
-    write_log(board, exchange)
-    print("Обмен записан в " + LOG_NAME, end="\r\n")
+    print("Плата на порту " + board.device, end="\r\n")
+    print("Нажмите кнопку %d раз — у вас %d секунд" % (EXPECTED_LINES, DURATION_S), end="\r\n")
+    lines = listen(board)
+    write_log(board, lines)
+    print("Принято строк: %d, лог записан в %s" % (len(lines), LOG_NAME), end="\r\n")
