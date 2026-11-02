@@ -1,0 +1,79 @@
+задание: 2.1.1
+проект: 211-command-usb
+устройство: 2e8a:000a
+серийный номер: E46320165B295726
+порт: COM10
+начало: 2026-11-02T22:43:49
+   0.000 --> enable
+   0.007 <-- dbg main:121 got e
+   0.025 <-- err handle_command:86 unknown command: berry Pi Trading Ltd
+   0.026 <-- dbg main:121 got n
+   0.034 <-- err handle_command:86 unknown command: Trading Ltd
+   0.039 <-- dbg main:121 got a
+   0.043 <-- err handle_command:86 unknown command: Raspberry Pi Trading Ltd
+   0.045 <-- dbg main:121 got b
+   0.053 <-- err handle_command:86 unknown command: aspberry Pi Trading Ltd
+   0.054 <-- dbg main:121 got l
+   0.058 <-- err handle_command:86 unknown command: i Trading Ltd
+   0.059 <-- dbg main:121 got e
+   0.063 <-- err handle_command:86 unknown command: berry Pi Trading Ltd
+   0.069 <-- dbg main:121 got
+   0.070 <-- err handle_command:86 unknown command:
+   2.116 --> disable
+   2.119 <-- dbg main:121 got d
+   2.121 <-- err handle_command:86 unknown command: pberry Pi Trading Ltd
+   2.124 <-- dbg main:121 got i
+   2.125 <-- err handle_command:86 unknown command: y Pi Trading Ltd
+   2.129 <-- dbg main:121 got s
+   2.131 <-- err handle_command:86 unknown command: ng Ltd
+   2.158 <-- dbg main:121 got a
+   2.159 <-- err handle_command:86 unknown command: Raspberry Pi Trading Ltd
+   2.167 <-- dbg main:121 got b
+   2.169 <-- err handle_command:86 unknown command: aspberry Pi Trading Ltd
+   2.169 <-- dbg main:121 got l
+   2.170 <-- err handle_command:86 unknown command: i Trading Ltd
+   2.171 <-- dbg main:121 got e
+   2.178 <-- err handle_command:86 unknown command: berry Pi Trading Ltd
+   2.182 <-- dbg main:121 got
+   2.185 <-- err handle_command:86 unknown command:
+   4.226 --> info
+   4.231 <-- dbg main:121 got i
+   4.233 <-- err handle_command:86 unknown command: y Pi Trading Ltd
+   4.236 <-- dbg main:121 got n
+   4.237 <-- err handle_command:86 unknown command: Trading Ltd
+   4.242 <-- dbg main:121 got f
+   4.244 <-- err handle_command:86 unknown command: erry Pi Trading Ltd
+   4.248 <-- dbg main:121 got o
+   4.249 <-- err handle_command:86 unknown command: rading Ltd
+   4.253 <-- dbg main:121 got
+   4.268 <-- err handle_command:86 unknown command:
+   6.318 --> nosuchcommand
+   6.323 <-- dbg main:121 got n
+   6.324 <-- err handle_command:86 unknown command: Trading Ltd
+   6.328 <-- dbg main:121 got o
+   6.329 <-- err handle_command:86 unknown command: rading Ltd
+   6.335 <-- dbg main:121 got s
+   6.337 <-- err handle_command:86 unknown command: ng Ltd
+   6.340 <-- dbg main:121 got u
+   6.341 <-- err handle_command:86 unknown command:  Ltd
+   6.345 <-- dbg main:121 got c
+   6.358 <-- err handle_command:86 unknown command: spberry Pi Trading Ltd
+   6.360 <-- dbg main:121 got h
+   6.369 <-- err handle_command:86 unknown command: ry Pi Trading Ltd
+   6.370 <-- dbg main:121 got c
+   6.371 <-- err handle_command:86 unknown command: spberry Pi Trading Ltd
+   6.371 <-- dbg main:121 got o
+   6.375 <-- err handle_command:86 unknown command: rading Ltd
+   6.377 <-- dbg main:121 got m
+   6.379 <-- err handle_command:86 unknown command:  Trading Ltd
+   6.382 <-- dbg main:121 got m
+   6.384 <-- err handle_command:86 unknown command:  Trading Ltd
+   6.385 <-- dbg main:121 got a
+   6.386 <-- err handle_command:86 unknown command: Raspberry Pi Trading Ltd
+   6.394 <-- dbg main:121 got n
+   6.395 <-- err handle_command:86 unknown command: Trading Ltd
+   6.396 <-- dbg main:121 got d
+   6.399 <-- err handle_command:86 unknown command: pberry Pi Trading Ltd
+   6.400 <-- dbg main:121 got
+   6.401 <-- err handle_command:86 unknown command:
+итог: отправлено команд 4, принято строк 68
